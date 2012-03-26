@@ -1,0 +1,6 @@
+precompile2git:
+  uncompiled_branch: master-launchpad
+  compiled_branch: master
+  user_name: precompile2git
+  user_email: team@fre.sc
+  rails_env: production
