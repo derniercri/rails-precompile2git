@@ -20,5 +20,5 @@
 
 Everything should be pretty straight forward:
 
- - Copy the precompile2git.yml.example into YOUR_RAILS_PROJECT/config/precompile2git.yml and customize it
- - In YOUR_RAILS_PROJECT/ run precompile2git
+ - Copy the `precompile2git.yml.example` into `YOUR_RAILS_PROJECT/config/precompile2git.yml` and customize it
+ - In `YOUR_RAILS_PROJECT/` folder run `precompile2git`
