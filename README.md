@@ -9,10 +9,10 @@
  - after (usually as a hook of a capistrano task):  will add an overhead to your deployment time, and in clustered environment, it might also be run multiple times, which might not necessary
 
  Precompile2git is a daemon that will, watch a git repo and will execute a routine for each new commit:
- 
- - break any currently running asset precompilation
+
+ - break any currently running assets precompilation
  - launch a new "rake assets:precompile"
- - commit everything 
+ - commit everything (with user_name and user_email as git config as set in config file)
  - push to origin on a specific branch (as set in config file)
 
  It makes deployments as fast as before Rails 3.1, and its secure the process.
