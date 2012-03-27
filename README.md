@@ -9,6 +9,7 @@
  - after (usually as a hook of a capistrano task):  will add an overhead to your deployment time, and in clustered environment, it might also be run multiple times, which might not necessary
 
  Precompile2git is a daemon that will, watch a git repo and will execute a routine for each new commit:
+ 
  - break any currently running asset precompilation
  - launch a new "rake assets:precompile"
  - commit everything 
@@ -20,5 +21,5 @@
 
 Everything should be pretty straight forward:
 
- - Copy the `precompile2git.yml.example` into `YOUR_RAILS_PROJECT/config/precompile2git.yml` and customize it
+ - Copy the `precompile2git.yml.example into `YOUR_RAILS_PROJECT/config/precompile2git.yml` and customize it
  - In `YOUR_RAILS_PROJECT/` folder run `precompile2git`
