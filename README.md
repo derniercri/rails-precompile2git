@@ -16,7 +16,7 @@
 
  It makes deployments as fast as before Rails 3.1, and its secure the process.
 
- ## Installation
+## Installation
 
 Everything should be pretty straight forward:
 
