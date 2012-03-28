@@ -15,7 +15,7 @@
  - commit everything (with `user_name` and `user_email` for git config as set in config file)
  - push to origin on a specific branch (as set in config file)
 
- It makes deployments as fast as before Rails 3.1, and its secure the process.
+ It makes deployments as fast as before Rails 3.1 and it secures the process.
 
 ## Installation
 
