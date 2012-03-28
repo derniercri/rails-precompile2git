@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robin Komiwes"]
-  s.date = "2012-03-27"
+  s.date = "2012-03-28"
   s.description = "Daemon that watch a Git repo for new commit, pull changes, precompile assets and push back to Git"
   s.email = "robin.komiwes@gmail.com"
   s.executables = ["precompile2git"]
@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
     "bin/precompile2git",
     "lib/precompile2git.rb",
     "lib/process.rb",
-    "precompile2git.yml.example"
+    "precompile2git.yml.example",
+    "rails-precompile2git.gemspec"
   ]
   s.homepage = "http://github.com/nectify/rails-precompile2git"
   s.licenses = ["Apache 2"]
