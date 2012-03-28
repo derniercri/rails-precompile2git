@@ -1,18 +1,18 @@
 # Rails : Precompile 2 Git
 
- A small lib that makes Rails 3.1.x deployments faster.
+ A small daemon that makes Rails 3.1.x deployments faster by automating precompilation process.
 
- With Rails 3.1 and the assets pipeline, you may have to precompile your assets before or after deploying. Both methods have pros and cons:
+ With Rails 3.1 and the assets pipeline, you have to precompile your assets before or during the deployment phase. Both methods have pros and cons:
 
- - before: makes deployment as fast as before Rails 3.1, but deploy will fail if assets:precompile has not been done (which should be done by developpers)
+ - before: Deployment time is as fast as before Rails 3.1, but deploy will fail if `rake assets:precompile` has not been runned (which is often the job of developpers)
 
- - after (usually as a hook of a capistrano task):  will add an overhead to your deployment time, and in clustered environment, it might also be run multiple times, which might not necessary
+ - after: Usually as a hook of a capistrano task -  will add an overhead to your deployment time, and in a distributed environment, it might also be run multiple times (on each rails instance), which might not necessary
 
- Precompile2git is a daemon that will, watch a git repo and will execute a routine for each new commit:
+ Precompile2git is a daemon that watch a branch on a git repo and execute a routine for each new commit:
 
- - break any currently running assets precompilation
+ - break any currently running assets precompilation task
  - launch a new "rake assets:precompile"
- - commit everything (with user_name and user_email as git config as set in config file)
+ - commit everything (with `user_name` and `user_email` for git config as set in config file)
  - push to origin on a specific branch (as set in config file)
 
  It makes deployments as fast as before Rails 3.1, and its secure the process.

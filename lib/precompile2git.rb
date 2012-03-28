@@ -43,7 +43,7 @@ class Precompile2git
   end
 
 
-  # Starts watching a git for any update and run precompilation task
+  # Run the first precompilation task and starts watching a git repo for any update
   def start
     @logger.info("Syncing repo.")
 
@@ -60,12 +60,12 @@ class Precompile2git
   end
 
 
-  # Creates a new processes and start the assets:precompile rake task
+  # Creates a new process and start the "rake assets:precompile" task
   def precompile
     begin
       if @precompilation_process_pid
 
-        @logger.info("A precompilation has been launched before. Killing any rake tasks that is still running")
+        @logger.info("A precompilation has been launched before. Killing any rake task that may be still running...")
 
         begin
           pids = Process.descendant_processes(@precompilation_process_pid)
@@ -117,13 +117,12 @@ class Precompile2git
   end
 
 
-  # Resets both compiled and uncompiled branch to have mirror of origin
+  # Resets both compiled and uncompiled branch to have a mirror of origin
   # Then merges uncompiled_branch to compiled one
   def sync_and_merge
     sync_with_origin(@uncompiled_branch)
     sync_with_origin(@compiled_branch)
     
-    # finally merge everything, this should be 
     @g.merge(@uncompiled_branch, nil)
   end
 
@@ -133,7 +132,7 @@ class Precompile2git
     begin
       @g.fetch
 
-      # logs should be empty if no updates
+      # log should be empty if no updates
       log = @g.log.between(@uncompiled_branch, "origin/" + @uncompiled_branch)
 
       return log.size == 0
@@ -145,8 +144,8 @@ class Precompile2git
   end
 
   
-  # Watch for a given interval if the repo has been updated.
-  # If so, any running rake task should be killed and a new ones should be launched
+  # Watch at a given interval if the repo has been updated.
+  # If so, any running rake task should be killed and a new one should be launched
   def watch_repo(interval)
     Thread.new do
       loop do
