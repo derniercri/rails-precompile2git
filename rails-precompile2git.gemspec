@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rails-precompile2git"
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robin Komiwes"]
-  s.date = "2012-03-28"
+  s.date = "2012-04-04"
   s.description = "Daemon that watch a Git repo for new commit, pull changes, precompile assets and push back to Git"
   s.email = "robin.komiwes@gmail.com"
   s.executables = ["precompile2git"]
