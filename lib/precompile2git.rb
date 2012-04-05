@@ -83,7 +83,7 @@ class Precompile2git
       @precompilation_process_pid = fork do
         @logger.info("Precompiler: Starting assets precompilation...")
 
-        system('bundle install > /dev/null; RAILS_ENV=' + @rails_env + ' rake assets:precompile  > /dev/null;')
+        system('bundle install > ' + @commands_log_file + '; RAILS_ENV=' + @rails_env + ' rake assets:precompile  > ' + @commands_log_file + ';')
 
         @logger.info("Precompiler: Precompilation done. Committing and pushing")
 

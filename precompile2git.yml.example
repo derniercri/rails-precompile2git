@@ -4,3 +4,4 @@ precompile2git:
   user_name: precompile2git
   user_email: team@fre.sc
   rails_env: production
+  commands_log_file: "/dev/null"
