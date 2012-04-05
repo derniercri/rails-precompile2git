@@ -30,7 +30,7 @@ class Precompile2git
       @g.add('.')
       @g.commit_all("Assets precompilation")
     rescue Git::GitExecuteError => e
-      @logger.error("Could not commit. This can occur if there was nothing to commit.")
+      @logger.error("Could not commit. This can occur if there was nothing to commit. Git error: " +  e.inspect)
     end
 
     begin
