@@ -1,5 +1,7 @@
 # Rails : Precompile 2 Git
 
+ The blog post: http://fre.sc/tech-blog/our-rails-3-1-deployment-workflow-and-tuning-the-assets-pipeline-precompilation-task
+
  A small daemon that makes Rails 3.1.x deployments faster by automating precompilation process.
 
  With Rails 3.1 and the assets pipeline, you have to precompile your assets before or during the deployment phase. Both methods have pros and cons:
