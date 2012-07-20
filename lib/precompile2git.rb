@@ -143,7 +143,27 @@ class Precompile2git
     end
   end
 
-  
+
+  def assets_changed?
+    begin
+
+      # log should be empty if no updates
+      files = @g.diff(@uncompiled_branch, "origin/" + @uncompiled_branch).collect{|d| d.path}
+
+      @logger.info "Files changed: #{files.to_s}"
+      return false if files.size == 0
+
+      return true if files.any?{|f|  f.match(/^app\/assets/) }
+      return true if files.any?{|f|  f.match(/^vendor\/assets/) }
+
+      return false #otherwise...
+    rescue Exception => e
+      puts $!, $@
+      @logger.error("Could not check see if assets changed. ")
+      return false
+    end
+  end
+
   # Watch at a given interval if the repo has been updated.
   # If so, any running rake task should be killed and a new one should be launched
   def watch_repo(interval)
@@ -153,13 +173,26 @@ class Precompile2git
 
         begin
           up_to_date = up_to_date?
-          
-          unless up_to_date 
-            @logger.info("New commits found, precompiling.")
-          
+
+          unless up_to_date
+
+            assets_changed = assets_changed?
+
+            @logger.info("New commits found, merging...")
+
             sync_and_merge
 
-            precompile
+            begin
+              @logger.info("Pushing changes to main branch")
+              @g.push("origin", @compiled_branch)
+            rescue Git::GitExecuteError => e
+              @logger.error("Could not push changes. Git error: " + e.inspect)
+            end
+
+            if assets_changed
+              @logger.info("Assets changed, precompiling...")
+              precompile
+            end
           end
 
         rescue Git::GitExecuteError => e
